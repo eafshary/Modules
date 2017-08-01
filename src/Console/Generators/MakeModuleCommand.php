@@ -92,10 +92,10 @@ class MakeModuleCommand extends Command
     {
         $this->displayHeader('make_module_step_1');
 
-        $this->container['name'] = $this->ask('Please enter the name of the module:', $this->container['name']);
-        $this->container['slug'] = $this->ask('Please enter the slug for the module:', $this->container['slug']);
-        $this->container['version'] = $this->ask('Please enter the module version:', $this->container['version']);
-        $this->container['description'] = $this->ask('Please enter the description of the module:', $this->container['description']);
+        // $this->container['name'] = $this->ask('Please enter the name of the module:', $this->container['name']);
+        // $this->container['slug'] = $this->ask('Please enter the slug for the module:', $this->container['slug']);
+        // $this->container['version'] = $this->ask('Please enter the module version:', $this->container['version']);
+        // $this->container['description'] = $this->ask('Please enter the description of the module:', $this->container['description']);
         $this->container['basename'] = studly_case($this->container['slug']);
         $this->container['namespace'] = config('modules.namespace').$this->container['basename'];
 
@@ -107,14 +107,14 @@ class MakeModuleCommand extends Command
         $this->comment('Basename (auto-generated):  '.$this->container['basename']);
         $this->comment('Namespace (auto-generated): '.$this->container['namespace']);
 
-        if ($this->confirm('If the provided information is correct, type "yes" to generate.')) {
+        // if ($this->confirm('If the provided information is correct, type "yes" to generate.')) {
             $this->comment('Thanks! That\'s all we need.');
             $this->comment('Now relax while your module is generated.');
 
             $this->generate();
-        } else {
-            return $this->stepOne();
-        }
+        // } else {
+            // return $this->stepOne();
+        // }
 
         return true;
     }
@@ -172,6 +172,7 @@ class MakeModuleCommand extends Command
         foreach ($sourceFiles as $file) {
             $contents = $this->replacePlaceholders($file->getContents());
             $subPath = $file->getRelativePathname();
+            $subPath = str_replace('DummyName', $this->container['basename'], $subPath);
 
             if (!empty($pathMap)) {
                 $subPath = str_replace($search, $replace, $subPath);
