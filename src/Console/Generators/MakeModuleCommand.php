@@ -172,7 +172,7 @@ class MakeModuleCommand extends Command
         foreach ($sourceFiles as $file) {
             $contents = $this->replacePlaceholders($file->getContents());
             $subPath = $file->getRelativePathname();
-            $subPath = str_replace('DummyName', $this->container['basename'], $subPath);
+            // $subPath = str_replace('DummyName', $this->container['basename'], $subPath);
 
             if (!empty($pathMap)) {
                 $subPath = str_replace($search, $replace, $subPath);

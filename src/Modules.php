@@ -38,9 +38,8 @@ class Modules
     public function register()
     {
         $modules = $this->repository->enabled();
-// dd($modules);
+
         $modules->each(function ($module) {
-            // dd($module);
             try {
                 $this->registerServiceProvider($module);
 
