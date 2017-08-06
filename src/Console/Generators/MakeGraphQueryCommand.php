@@ -5,31 +5,30 @@ namespace Caffeinated\Modules\Console\Generators;
 use Caffeinated\Modules\Console\GeneratorCommand;
 use Illuminate\Support\Str;
 
-class MakeGraphTypeCommand extends GeneratorCommand
+class MakeGraphQueryCommand extends GeneratorCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'make:module:gtype
+    protected $signature = 'make:module:gquery
     	{slug : The slug of the module.}
-    	{name : The name of the graphType class.}
-        {--query : Create a new query file for the graphType.}';
+    	{name : The name of the graphQuery class.}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new module graphType class';
+    protected $description = 'Create a new module graphQuery class';
 
     /**
      * String to store the command type.
      *
      * @var string
      */
-    protected $type = 'Module graphType';
+    protected $type = 'Module graphQuery';
 
     /**
      * Execute the console command.
@@ -58,7 +57,7 @@ class MakeGraphTypeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__.'/stubs/graphType.stub';
+        return __DIR__.'/stubs/graphQuery.stub';
     }
 
     /**
@@ -70,6 +69,6 @@ class MakeGraphTypeCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return module_class($this->argument('slug'), 'GraphQL\Type');
+        return module_class($this->argument('slug'), 'GraphQL\Query');
     }
 }

@@ -31,6 +31,8 @@ class GeneratorServiceProvider extends ServiceProvider
             'command.make.module.seeder'     => \Caffeinated\Modules\Console\Generators\MakeSeederCommand::class,
             'command.make.module.test'       => \Caffeinated\Modules\Console\Generators\MakeTestCommand::class,
             'command.make.module.gtype'      => \Caffeinated\Modules\Console\Generators\MakeGraphTypeCommand::class,
+            'command.make.module.gquery'     => \Caffeinated\Modules\Console\Generators\MakeGraphQueryCommand::class,
+            'command.make.module.gmutation'  => \Caffeinated\Modules\Console\Generators\MakeGraphMutationCommand::class,
         ];
 
         foreach ($generators as $slug => $class) {
