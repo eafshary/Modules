@@ -5,7 +5,7 @@ namespace Caffeinated\Modules\Console\Generators;
 use Caffeinated\Modules\Console\GeneratorCommand;
 use Illuminate\Support\Str;
 
-class MakeModelCommand extends GeneratorCommand
+class MakeGraphTypeCommand extends GeneratorCommand
 {
     /**
      * The name and signature of the console command.
