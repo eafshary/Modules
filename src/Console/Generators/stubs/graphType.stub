@@ -11,7 +11,7 @@ class DummyClass extends GraphQLType
     protected $attributes = [
         'name' => 'Users',
         'description' => 'A type',
-        'model' => User::class,
+        'model' => '',
     ];
 
     public function fields()
@@ -29,10 +29,10 @@ class DummyClass extends GraphQLType
                 'type' => Type::string(),
                 'description' => 'The name of the user'
             ],
-            'user_profiles' => [
-                'type' => GraphQL::type('user_profiles'),
-                'description' => 'The profile of the user'
-            ]
+            //'user_profiles' => [
+            //    'type' => GraphQL::type('user_profiles'),
+            //    'description' => 'The profile of the user'
+            //]
         ];
     }
 

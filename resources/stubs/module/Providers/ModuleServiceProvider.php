@@ -26,5 +26,22 @@ class ModuleServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
+
+        $this->registerConfig();
+    }
+
+    /**
+     * Register config.
+     *
+     * @return void
+     */
+    protected function registerConfig()
+    {
+        // $this->publishes([
+        //     __DIR__.'/../Config/config.php' => config_path('test.php'),
+        // ], 'config');
+        $this->mergeConfigFrom(
+            __DIR__.'/../Config/config.php', 'DummySlug' 
+        );
     }
 }

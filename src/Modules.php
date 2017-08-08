@@ -44,6 +44,8 @@ class Modules
                 $this->registerServiceProvider($module);
 
                 $this->autoloadFiles($module);
+
+                $this->setGraphQLConfig($module);
             } catch (ModuleNotFoundException $e) {
                 //
             }
@@ -84,6 +86,29 @@ class Modules
                 }
             }
         }
+    }
+
+    /**
+     * Set graphql config.
+     *
+     * @param array $module
+     *
+     * @return void
+     */
+    private function setGraphQLConfig($module)
+    {
+        // Set GraphQL Types
+        config(['graphql.types' => array_merge(config('graphql.types'),
+            config($module['slug'].'.graphql.types'))]);
+        // Set GraphQL Query
+        config(['graphql.schemas.default.query' => array_merge(config('graphql.schemas.default.query'),
+            config($module['slug'].'.graphql.query'))]);
+        // Set GraphQL mutation
+        config(['graphql.schemas.default.mutation' => array_merge(config('graphql.schemas.default.mutation'),
+            config($module['slug'].'.graphql.mutation'))]);
+        // Set GraphQL middleware
+        config(['graphql.schemas.default.middleware' => array_merge(config('graphql.schemas.default.middleware'),
+            config($module['slug'].'.graphql.middleware'))]);
     }
 
     /**
