@@ -97,17 +97,18 @@ class Modules
      */
     private function setGraphQLConfig($module)
     {
+        $schema = config($module['slug'].'.graphql.schema');
         // Set GraphQL Types
         config(['graphql.types' => array_merge(config('graphql.types'),
             config($module['slug'].'.graphql.types'))]);
         // Set GraphQL Query
-        config(['graphql.schemas.default.query' => array_merge(config('graphql.schemas.default.query'),
+        config(['graphql.schemas.'.$schema.'.query' => array_merge(config('graphql.schemas.'.$schema.'.query')?:[],
             config($module['slug'].'.graphql.query'))]);
         // Set GraphQL mutation
-        config(['graphql.schemas.default.mutation' => array_merge(config('graphql.schemas.default.mutation'),
+        config(['graphql.schemas.'.$schema.'.mutation' => array_merge(config('graphql.schemas.'.$schema.'.mutation')?:[],
             config($module['slug'].'.graphql.mutation'))]);
         // Set GraphQL middleware
-        config(['graphql.schemas.default.middleware' => array_merge(config('graphql.schemas.default.middleware'),
+        config(['graphql.schemas.'.$schema.'.middleware' => array_merge(config('graphql.schemas.'.$schema.'.middleware')?:[],
             config($module['slug'].'.graphql.middleware'))]);
     }
 
