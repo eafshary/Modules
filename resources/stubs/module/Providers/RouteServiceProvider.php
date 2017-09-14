@@ -14,7 +14,8 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'DummyNamespace\Http\Controllers';
+    protected $webNamespace = 'DummyNamespace\Http\Controllers';
+    protected $apiNamespace = 'DummyNamespace\Http\Api\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -53,7 +54,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::group([
             'middleware' => 'web',
-            'namespace'  => $this->namespace,
+            'namespace'  => $this->webNamespace,
         ], function ($router) {
             require module_path('DummySlug', 'Routes/web.php');
         });
@@ -70,7 +71,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::group([
             'middleware' => 'api',
-            'namespace'  => $this->namespace,
+            'namespace'  => $this->apiNamespace,
             'prefix'     => 'api',
         ], function ($router) {
             require module_path('DummySlug', 'Routes/api.php');
